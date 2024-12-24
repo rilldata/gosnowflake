@@ -6,12 +6,13 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/apache/arrow/go/v16/arrow/memory"
 	"math/big"
 	"reflect"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/apache/arrow/go/v15/arrow/memory"
 
 	"database/sql/driver"
 )
@@ -598,6 +599,6 @@ func TestArrowMemoryCleanedUp(t *testing.T) {
 		assertTrueF(t, rows.Next())
 		assertNilF(t, rows.Scan(&v))
 		assertEqualE(t, v, 2)
-		assertFalseE(t, rows.Next())
+		assertFalseF(t, rows.Next())
 	})
 }
